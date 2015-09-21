@@ -1,7 +1,5 @@
-FROM debian:wheezy
-MAINTAINER Ian Blenke <ian@blenke.com>
-
-ENV VERSION 1.0.4-1
+FROM debian:7
+MAINTAINER Ian Blenke <ian@blenke.com>, Guillaume Bienkowski <guitreize@gmail.com>
 
 # Prepare the Debian non-free and backports repositories for dependencies
 RUN echo deb http://http.us.debian.org/debian wheezy non-free > /etc/apt/sources.list.d/non-free.list
@@ -17,7 +15,7 @@ RUN wget -O - -q http://linphone.org/snapshots/debian/repo.gpg.key | apt-key add
 RUN apt-get update -y
 
 # Install the specific version we're building this image for
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y bc-flexisip=$VERSION
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y bc-flexisip
 
 # Add it to the default path
 ENV PATH=$PATH:/opt/belledonne-communications/bin
