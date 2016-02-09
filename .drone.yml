@@ -1,0 +1,7 @@
+build:
+  image: centos:7
+  commands:
+    - yum install -y cmake soci
+    - git clone git://git.linphone.org/flexisip --recursive
+    - cd flexisip
+    - ./submodules/cmake-builder/prepare.py flexisip -DENABLE_SOCI=YES
